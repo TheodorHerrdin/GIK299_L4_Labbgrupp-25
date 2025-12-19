@@ -54,6 +54,8 @@ namespace Evil_Eavesdrop_Enterprises
             Console.WriteLine(p1);
 
             Console.ReadLine();
+
+            Console.WindowHeight = 40;
         }
     }
 }
