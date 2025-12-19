@@ -5,6 +5,8 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
+            Console.WriteLine("Evil Eavesdrop Enterprises is operational.");
+            Console.WriteLine("Hej Shaho");
         }
     }
 }
