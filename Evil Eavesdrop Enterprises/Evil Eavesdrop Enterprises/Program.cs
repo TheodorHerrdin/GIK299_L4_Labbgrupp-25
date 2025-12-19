@@ -21,7 +21,7 @@ namespace Evil_Eavesdrop_Enterprises
         public string EyeColor { get; set; }
         public DateTime Birthday { get; set; }
 
-        // Konstruktor för att initiera alla egenskaper vid skapandet av objektet
+        //Konstruktor för att initiera alla egenskaper vid skapandet av objektet
         public Person(Gender gender, Hair hair, string eyeColor, DateTime birthday)
         {
             Gender = gender;
@@ -44,13 +44,13 @@ namespace Evil_Eavesdrop_Enterprises
     {
         static void Main(string[] args)
         {
-            // För att skapa håret till konstruktorn
+            //För att skapa håret till konstruktorn
             Hair myHair = new Hair { Color = "Grönt", Length = "långt" };
 
-            // SKAPA PERSON VIA KONSTRUKTORN
+            //SKAPA PERSON VIA KONSTRUKTORN
             Person p1 = new Person(Gender.Man, myHair, "lila", new DateTime(1995, 1, 17));
 
-            // Skriv ut personen (ToString körs automatiskt)
+            //Skriv ut personen (ToString körs automatiskt)
             Console.WriteLine(p1);
 
             Console.ReadLine();
