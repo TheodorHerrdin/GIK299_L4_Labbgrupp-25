@@ -28,9 +28,9 @@ namespace Evil_Eavesdrop_Enterprises
         public override string ToString()
         {
             return "Född: " + Birthday.ToShortDateString() +
-                ", kön; " + Gender +
-                ", Ögon: " + EyeColor +
-                ", Hår: " + Hair.Color + ", " + Hair.Length;
+                "\nkön: " + Gender +
+                "\nÖgon: " + EyeColor +
+                "\nHår: " + Hair.Color + " & " + Hair.Length;
         }
     }
 
@@ -38,7 +38,22 @@ namespace Evil_Eavesdrop_Enterprises
     {
         static void Main(string[] args)
         {
+            //Skapa en hårdkodad person
+            Person p1 = new Person();
 
+            p1.Gender = Gender.Man;
+            p1.EyeColor = "lila";
+            p1.Birthday = new DateTime(1995, 1, 17);
+
+            p1.Hair = new Hair();
+            p1.Hair.Color = "Grönt";
+            p1.Hair.Length = "långt";
+
+            //Skriv ut personen
+            Console.WriteLine(p1);
+
+            //Så konsolen inte stängs direkt
+            Console.ReadLine();
         }
     }
 }
