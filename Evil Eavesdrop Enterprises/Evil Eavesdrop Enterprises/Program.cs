@@ -2,35 +2,41 @@
 
 namespace Evil_Eavesdrop_Enterprises
 {
-    //Enum för att representera kön
-    public enum Gender 
-    {
-        Kvinna,
-        Man,
-        Övrigt
-    }
+    //Énum för att hantera kön
+    public enum Gender { Kvinna, Man, Övrigt }
 
-    //Struct för att representera hår
-    public struct Hair 
+    //Struct för att hantera hår
+    public struct Hair
     {
         public string Color;
         public string Length;
     }
 
-    //Klass för att representera en person
-    public class Person 
+    //Klass för att hantera personen
+    public class Person
     {
-        public Gender Gender;
-        public Hair Hair;
-        public string EyeColor;
-        public DateTime Birthday;
+        //Egenskaper
+        public Gender Gender { get; set; }
+        public Hair Hair { get; set; }
+        public string EyeColor { get; set; }
+        public DateTime Birthday { get; set; }
 
+        // Konstruktor för att initiera alla egenskaper vid skapandet av objektet
+        public Person(Gender gender, Hair hair, string eyeColor, DateTime birthday)
+        {
+            Gender = gender;
+            Hair = hair;
+            EyeColor = eyeColor;
+            Birthday = birthday;
+        }
+
+        //ToString metod för att skriva ut personens information
         public override string ToString()
         {
-            return "Född: " + Birthday.ToShortDateString() +
-                "\nkön: " + Gender +
-                "\nÖgon: " + EyeColor +
-                "\nHår: " + Hair.Color + " & " + Hair.Length;
+            return $"Född: {Birthday:yyyy-MM-dd}" +
+                   $"\nKön: {Gender}" +
+                   $"\nÖgon: {EyeColor}" +
+                   $"\nHår: {Hair.Color} & {Hair.Length}";
         }
     }
 
@@ -38,21 +44,15 @@ namespace Evil_Eavesdrop_Enterprises
     {
         static void Main(string[] args)
         {
-            //Skapa en hårdkodad person
-            Person p1 = new Person();
+            // För att skapa håret till konstruktorn
+            Hair myHair = new Hair { Color = "Grönt", Length = "långt" };
 
-            p1.Gender = Gender.Man;
-            p1.EyeColor = "lila";
-            p1.Birthday = new DateTime(1995, 1, 17);
+            // SKAPA PERSON VIA KONSTRUKTORN
+            Person p1 = new Person(Gender.Man, myHair, "lila", new DateTime(1995, 1, 17));
 
-            p1.Hair = new Hair();
-            p1.Hair.Color = "Grönt";
-            p1.Hair.Length = "långt";
-
-            //Skriv ut personen
+            // Skriv ut personen (ToString körs automatiskt)
             Console.WriteLine(p1);
 
-            //Så konsolen inte stängs direkt
             Console.ReadLine();
         }
     }
