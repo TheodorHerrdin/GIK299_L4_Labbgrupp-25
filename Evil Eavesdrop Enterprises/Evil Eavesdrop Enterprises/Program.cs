@@ -16,8 +16,8 @@ namespace Evil_Eavesdrop_Enterprises
                 Console.WriteLine();
                 Console.WriteLine("Nummer 1: Lägg till en ny person");
                 Console.WriteLine("Nummer 2: Visa lista på alla personer");
-                Console.WriteLine("Nummer 3: Välj nummer 1 eller 2 för att gå vidare och 3 för att avsluta");
-                Console.WriteLine("Nummer 4: För att avsluta");
+                Console.WriteLine("Nummer 3: För att avsluta");
+                Console.Write("Välj en siffra: ");
 
                 string choice = Console.ReadLine();
                 Console.WriteLine();
@@ -37,9 +37,8 @@ namespace Evil_Eavesdrop_Enterprises
                         runProgram = false;
                         break;
                     default:
-                        Console.WriteLine("Bror? Det står väl nummer 1 eller 2.. Prova igen");
+                        Console.WriteLine("Bror? Det står väl nummer 1, 2 eller 3.. Prova igen");
                         break;
-                        Console.WriteLine();
                 }
             }
         }

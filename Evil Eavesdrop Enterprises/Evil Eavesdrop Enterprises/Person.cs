@@ -33,57 +33,96 @@ namespace Evil_Eavesdrop_Enterprises
             EyeColor = eyeColor;
             Birthday = birthday;
         }
-        
+
         public static void AddPerson()
         {
-            try
+            Console.Write("Ögonfärg: ");
+            String eyeColor = Console.ReadLine();
+            Console.Write("Hårfärg: ");
+            String hairColor = Console.ReadLine();
+            Console.Write("Hårlängd: ");
+            String hairLength = Console.ReadLine();
+            Hair hair = new Hair { Color = hairColor, Length = hairLength };
+
+
+            Gender gender;
+            int genderChoice = 0;
+            bool isGenderValid = false;
+
+            while (!isGenderValid)
             {
-                Console.Write("Ögonfärg: ");
-                String eyeColor = Console.ReadLine();
-                Console.Write("Hårfärg: ");
-                String hairColor = Console.ReadLine();
-                Console.Write("Hårlängd: ");
-                String hairLength = Console.ReadLine();
-                Hair hair = new Hair
-                {
-                    Color = hairColor,
-                    Length = hairLength
-                };
                 Console.WriteLine("Välj Kön:");
                 Console.WriteLine("1: Kvinna");
                 Console.WriteLine("2: Man");
                 Console.WriteLine("3: Övrigt");
                 Console.Write("Val: ");
 
-                int GenderChoice = int.Parse(Console.ReadLine());
-                Gender gender = GenderChoice switch
+                string input = Console.ReadLine();
+
+
+                if (int.TryParse(input, out genderChoice) && genderChoice >= 1 && genderChoice <= 3)
                 {
-                    1 => Gender.Kvinna,
-                    2 => Gender.Man,
-                    3 => Gender.Övrigt,
-                    _ => throw new Exception("Ogiltigt val för kön.")
-                };
-
-                Console.Write("Födelseår ");
-                int Year = int.Parse(Console.ReadLine());
-
-                Console.Write("Födelsemånad ");
-                int Month = int.Parse(Console.ReadLine());
-
-                Console.Write("Födelsdag ");
-                int Day = int.Parse(Console.ReadLine());
-
-                DateTime Birthday = new DateTime(Year, Month, Day);
-                Person newPerson = new Person(gender, hair, eyeColor, Birthday);
-                PersonList.Add(newPerson);
-
-                Console.WriteLine("Person tillagd framgångsrikt!");
+                    isGenderValid = true;
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Ogiltig inmatning, vänligen välj en siffra mellan 1-3.");
+                    Console.WriteLine();
+                }
             }
-            catch (Exception ex)
+
+
+            if (genderChoice == 1)
             {
-                Console.WriteLine($"Fel vid tillägg av person: ");
+                gender = Gender.Kvinna;
             }
+            else if (genderChoice == 2)
+            {
+                gender = Gender.Man;
+            }
+            else
+            {
+                gender = Gender.Övrigt;
+            }
+
+
+            DateTime birthday = DateTime.MinValue;
+            bool isDateTimeValid = false;
+
+            while (!isDateTimeValid)
+            {
+                try
+                {
+                    Console.WriteLine("Ange födelseår");
+                    Console.Write("År (YYYY): ");
+                    int year = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ange födelsemånad");
+                    Console.Write("Månad (MM): ");
+                    int month = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ange födelsdag");
+                    Console.Write("Dag (DD): ");
+                    int day = int.Parse(Console.ReadLine());
+
+                    birthday = new DateTime(year, month, day);
+                    isDateTimeValid = true;
+                }
+                catch
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Fel vid inmatning av datum ogiltigt datum angivet, vänligen försök igen.");
+                    Console.WriteLine();
+                }
+            }
+
+            Person newPerson = new Person(gender, hair, eyeColor, birthday);
+            PersonList.Add(newPerson);
+
+            Console.WriteLine("Personen har lagts till i listan ");
         }
+
         public static void ListPerson()
         {
             if (PersonList.Count == 0)
