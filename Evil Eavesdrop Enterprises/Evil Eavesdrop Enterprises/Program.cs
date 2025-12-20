@@ -47,10 +47,10 @@ namespace Evil_Eavesdrop_Enterprises
             //För att skapa håret till konstruktorn
             Hair myHair = new Hair { Color = "Grönt", Length = "långt" };
 
-            //SKAPA PERSON VIA KONSTRUKTORN
+            //Skapa en person med hjälp av konstruktorn
             Person p1 = new Person(Gender.Man, myHair, "lila", new DateTime(1995, 1, 17));
 
-            //Skriv ut personen (ToString körs automatiskt)
+            //Skriv ut personens information
             Console.WriteLine(p1);
 
             Console.ReadLine();
