@@ -74,7 +74,7 @@ namespace Evil_Eavesdrop_Enterprises
                 else
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Ogiltig inmatning, vänligen välj en siffra mellan 1-3.");
+                    Console.WriteLine("Ogiltig inmatning av kön, vänligen välj en siffra mellan 1-3.");
                     Console.WriteLine();
                 }
             }
@@ -93,40 +93,56 @@ namespace Evil_Eavesdrop_Enterprises
                 gender = Gender.Övrigt;
             }
 
-            //Hantering av födelsedatum med felhantering (try/catch)
+            //Vi skpapar variabler för att lagra födelsedatumet innan vi sätter ihop det till ett DateTime-objekt
             DateTime birthday = DateTime.MinValue;
-            bool isDateTimeValid = false;
+            int year = 0, month = 0, day = 0;
 
-            while (!isDateTimeValid)
+            //Loop för att säkerställa giltigt årtal
+            while (true)
             {
-                try
+                Console.Write("Ange födelseår (YYYY): ");
+                if (int.TryParse(Console.ReadLine(), out year) && year >= 1900 && year <= DateTime.Now.Year)
+                    break;
+                Console.WriteLine("Ogiltigt år, försök igen.");
+            }
+
+            //Loop för att säkerställa giltig månad
+            while (true) 
+            {
+                Console.Write("Ange födelsemånad (MM): ");
+                if (int.TryParse(Console.ReadLine(), out month) && month >= 1 && month <= 12)
+                    break;
+                Console.WriteLine("Ogiltig månad, försök igen.");
+            }
+
+            //Loop för att säkerställa giltig dag
+            while (true) 
+            {
+                Console.Write("Ange födelsedag (DD): ");
+                if (int.TryParse(Console.ReadLine(), out day) && day >= 1 && day <= 31)
                 {
-                    Console.WriteLine("Ange födelseår");
-                    Console.Write("År (YYYY): ");
-                    int year = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Ange födelsemånad");
-                    Console.Write("Månad (MM): ");
-                    int month = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Ange födelsdag");
-                    Console.Write("Dag (DD): ");
-                    int day = int.Parse(Console.ReadLine());
-
-                    birthday = new DateTime(year, month, day);
-                    isDateTimeValid = true;
+                    try
+                    {
+                        birthday = new DateTime(year, month, day);
+                        break;
+                    }
+                    catch
+                    {
+                        Console.WriteLine($"Ogiltigt datum {year}-{month}-{day} finns inte, vänligen kontrollera uppgifterna och fyll i på nytt.");
+                    }
                 }
-                catch
+                else 
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Fel vid inmatning av datum ogiltigt datum angivet, vänligen försök igen.");
-                    Console.WriteLine();
+                    Console.WriteLine("Ogiltig dag, försök igen.");
                 }
             }
+
+            
             //Skapar en ny person med angivna värden och lägger till i listan
             Person newPerson = new Person(gender, hair, eyeColor, birthday);
             PersonList.Add(newPerson);
 
+            Console.WriteLine();
             Console.WriteLine("Personen har lagts till i listan ");
         }
 
