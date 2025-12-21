@@ -46,6 +46,7 @@ namespace Evil_Eavesdrop_Enterprises
             String hairColor = Console.ReadLine();
             Console.Write("Hårlängd: ");
             String hairLength = Console.ReadLine();
+            Console.WriteLine();
 
             //Skapar en instans av hair structen med angivna värden
             Hair hair = new Hair { Color = hairColor, Length = hairLength };
@@ -77,6 +78,7 @@ namespace Evil_Eavesdrop_Enterprises
                     Console.WriteLine("Ogiltig inmatning av kön, vänligen välj en siffra mellan 1-3.");
                     Console.WriteLine();
                 }
+                Console.WriteLine();
             }
 
             //Omvandlar användarens val till motsvarande enum-värde
@@ -143,7 +145,7 @@ namespace Evil_Eavesdrop_Enterprises
             PersonList.Add(newPerson);
 
             Console.WriteLine();
-            Console.WriteLine("Personen har lagts till i listan ");
+            Console.WriteLine("Personen har lagts till i listan, du kommer nu att återgå till menyn");
         }
 
         //Går igenom listan och skriver ut varje persons information med hjälp av ToString-metoden
@@ -157,6 +159,7 @@ namespace Evil_Eavesdrop_Enterprises
             foreach (var p in PersonList)
             {
                 Console.WriteLine(p.ToString());
+                Console.WriteLine("-----------------------");
             }
         }
 
