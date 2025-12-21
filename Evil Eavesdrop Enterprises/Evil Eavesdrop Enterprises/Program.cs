@@ -6,7 +6,7 @@ namespace Evil_Eavesdrop_Enterprises
     {
         static void Main(string[] args)
         {
-            //Bool för att hålla igång programmet
+            //Bool kontrollerarar om huvudloopen ska fortsätta köras
             bool runProgram = true;
 
             //Huvudloop för programmet
@@ -22,6 +22,7 @@ namespace Evil_Eavesdrop_Enterprises
                 string choice = Console.ReadLine();
                 Console.WriteLine();
 
+                //Switch-sats för att hantera användarens menyval
                 switch (choice)
                 {
                     case "1":
@@ -34,7 +35,7 @@ namespace Evil_Eavesdrop_Enterprises
                         Console.WriteLine();
                         break;
                     case "3":
-                        runProgram = false;
+                        runProgram = false; //Bryter huvudloopen och avslutar programmet
                         break;
                     default:
                         Console.WriteLine("Bror? Det står väl nummer 1, 2 eller 3.. Prova igen");
