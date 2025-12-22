@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Evil_Eavesdrop_Enterprises
 {
+    public struct PersonName
+    {
+        public string FirstName;
+        public string LastName;
+    }
+
     //Énum med fasta alternativ för kön för att undvika felstavningar
     public enum Gender { Kvinna, Man, Övrigt }
 
@@ -16,25 +22,29 @@ namespace Evil_Eavesdrop_Enterprises
         public string Length;
     }
 
+    //Struct för att hantera ögonfärg
+    public struct EyeColor
+    {
+        public string Color;
+    }
+
     //Klass för att hantera personen
     public class Person
     {
         //Egenskaper som beskriver en person
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public PersonName Name { get; set; }
         public Gender Gender { get; set; }
         public Hair Hair { get; set; }
-        public string EyeColor { get; set; }
+        public EyeColor EyeColor { get; set; }
         public DateTime Birthday { get; set; }
 
         //Statisk lista för att lagra alla personer
         public static List<Person> PersonList = new List<Person>();
         
         //Konstruktor för att initiera alla egenskaper vid skapandet av nya objekt
-        public Person(string firstName, string lastName, Gender gender, Hair hair, string eyeColor, DateTime birthday)
+        public Person(PersonName name, Gender gender, Hair hair, EyeColor eyeColor, DateTime birthday)
         {
-            FirstName = firstName;
-            LastName = lastName;
+            Name = name;
             Gender = gender;
             Hair = hair;
             EyeColor = eyeColor;
@@ -57,8 +67,14 @@ namespace Evil_Eavesdrop_Enterprises
             String hairLength = Console.ReadLine();
             Console.WriteLine();
 
+            //Skapar en instans av PersonName structen med angivna värden
+            PersonName name = new PersonName { FirstName = firstName, LastName = lastName };
+
             //Skapar en instans av hair structen med angivna värden
             Hair hair = new Hair { Color = hairColor, Length = hairLength };
+
+            //Skapar en instans av eyeColor structen med angivna värden
+            EyeColor eye = new EyeColor { Color = eyeColor };
 
             //Variabler för att hantera valet av kön.
             Gender gender;
@@ -150,7 +166,7 @@ namespace Evil_Eavesdrop_Enterprises
 
             
             //Skapar en ny person med angivna värden och lägger till i listan
-            Person newPerson = new Person(firstName, lastName, gender, hair, eyeColor, birthday);
+            Person newPerson = new Person(name, gender, hair, eye, birthday);
             PersonList.Add(newPerson);
 
             Console.WriteLine();
@@ -175,11 +191,11 @@ namespace Evil_Eavesdrop_Enterprises
         //Bestämmer hur en persons information ska presenteras som en sträng
         public override string ToString()
         {
-            return $"Förnamn: {FirstName}" +
-                   $"\nEfternamn: {LastName}" +
+            return $"Förnamn: {Name.FirstName}" +
+                   $"\nEfternamn: {Name.LastName}" +
                    $"\nFödd: {Birthday:yyyy-MM-dd}" +
                    $"\nKön: {Gender}" +
-                   $"\nÖgon: {EyeColor}" +
+                   $"\nÖgon: {EyeColor.Color}" +
                    $"\nHår: {Hair.Color} & {Hair.Length}";
         }
     }
