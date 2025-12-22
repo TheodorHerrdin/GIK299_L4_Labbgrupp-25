@@ -30,7 +30,7 @@ namespace Evil_Eavesdrop_Enterprises
         //Statisk lista för att lagra alla personer
         public static List<Person> PersonList = new List<Person>();
         
-        //Konstruktor för att initiera alla egenskaper vid skapandet av nya objekt
+        //Konstruktor för att initiera alla egenskaper vid skapandet av nya objekt <3 
         public Person(string firstName, string lastName, Gender gender, Hair hair, string eyeColor, DateTime birthday)
         {
             FirstName = firstName;
