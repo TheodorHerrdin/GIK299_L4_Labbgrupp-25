@@ -22,7 +22,6 @@ namespace Evil_Eavesdrop_Enterprises
         //Egenskaper som beskriver en person
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public Gender Gender { get; set; }
         public Hair Hair { get; set; }
         public string EyeColor { get; set; }
