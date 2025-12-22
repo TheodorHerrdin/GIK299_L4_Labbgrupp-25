@@ -20,6 +20,9 @@ namespace Evil_Eavesdrop_Enterprises
     public class Person
     {
         //Egenskaper som beskriver en person
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
         public Gender Gender { get; set; }
         public Hair Hair { get; set; }
         public string EyeColor { get; set; }
@@ -29,8 +32,10 @@ namespace Evil_Eavesdrop_Enterprises
         public static List<Person> PersonList = new List<Person>();
         
         //Konstruktor för att initiera alla egenskaper vid skapandet av nya objekt
-        public Person(Gender gender, Hair hair, string eyeColor, DateTime birthday)
+        public Person(string firstName, string lastName, Gender gender, Hair hair, string eyeColor, DateTime birthday)
         {
+            FirstName = firstName;
+            LastName = lastName;
             Gender = gender;
             Hair = hair;
             EyeColor = eyeColor;
@@ -40,6 +45,11 @@ namespace Evil_Eavesdrop_Enterprises
         //Metod för att lägga till en ny person via användarinmatning
         public static void AddPerson()
         {
+            Console.Write("Förnamn: ");
+            String firstName =  Console.ReadLine();
+            Console.Write("Efternamn: ");
+            String lastName = Console.ReadLine();
+            Console.WriteLine();
             Console.Write("Ögonfärg: ");
             String eyeColor = Console.ReadLine();
             Console.Write("Hårfärg: ");
@@ -141,7 +151,7 @@ namespace Evil_Eavesdrop_Enterprises
 
             
             //Skapar en ny person med angivna värden och lägger till i listan
-            Person newPerson = new Person(gender, hair, eyeColor, birthday);
+            Person newPerson = new Person(firstName, lastName, gender, hair, eyeColor, birthday);
             PersonList.Add(newPerson);
 
             Console.WriteLine();
@@ -166,7 +176,9 @@ namespace Evil_Eavesdrop_Enterprises
         //Bestämmer hur en persons information ska presenteras som en sträng
         public override string ToString()
         {
-            return $"Född: {Birthday:yyyy-MM-dd}" +
+            return $"Förnamn: {FirstName}" +
+                   $"\nEfternamn: {LastName}" +
+                   $"\nFödd: {Birthday:yyyy-MM-dd}" +
                    $"\nKön: {Gender}" +
                    $"\nÖgon: {EyeColor}" +
                    $"\nHår: {Hair.Color} & {Hair.Length}";
