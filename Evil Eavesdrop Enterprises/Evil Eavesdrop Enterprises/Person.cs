@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Evil_Eavesdrop_Enterprises
 {
+    //Struct för att hantera för- och efternamn
     public struct PersonName
     {
         public string FirstName;
