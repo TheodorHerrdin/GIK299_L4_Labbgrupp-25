@@ -127,7 +127,7 @@ namespace Evil_Eavesdrop_Enterprises
                 Console.WriteLine("Ogiltig månad, försök igen.");
             }
 
-            //Loop för att säkerställa giltig dag
+            //Loop för att säkerställa giltig dag och inget annat felaktigt datum
             while (true) 
             {
                 Console.Write("Ange födelsedag (DD): ");
